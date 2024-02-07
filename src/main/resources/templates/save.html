@@ -1,26 +1,38 @@
 <!DOCTYPE html>
-<head>
+<head xmlns:th="http://www.w3.org/1999/xhtml">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
     <title>Save</title>
 </head>
 <body>
-<div class="container my-2 py-2">
+<div class="container my-3">
     <h2 class="border-bottom py-2">글쓰기</h2>
 <!-- action attribute: dest(server address), method attribute: http request method(get, post) -->
-<form action="/board/save" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-        Title <input type="text" class="form-control" name="boardTitle" placeholder="제목을 입력해주세요." required><br>
-        Writer <input type="text" class="form-control" name="boardWriter" placeholder="작성자" required><br>
-        Password <input type="password" class="form-control" name="boardPass" placeholder="비밀번호" required><br>
-        <textarea class="form-control" rows="10" name="boardContents" placeholder="내용을 입력해주세요." required></textarea><br>
-        <input type="file" class="form-control form-control-sm border-0" name="boardFile"> <br>
-        <p><input type="submit" value="글 작성" class="btn btn-primary btn-block my-4"></p>
-    </div>
-</form>
+    <form action="/board/save" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            Title <input type="text" class="form-control" name="boardTitle" placeholder="제목을 입력해주세요." required><br>
+            <div class="row g-2">
+                <div class="col-sm">
+                    Writer <input type="text" class="form-control" name="boardWriter" placeholder="작성자" required><br>
+                </div>
+                <div class="col-sm-4">
+                Password <input type="password" class="form-control" name="boardPass" placeholder="비밀번호" required><br>
+                </div>
+            </div>
+            <textarea style="resize: none;" class="form-control" rows="10" name="boardContents" placeholder="내용을 입력해주세요." required></textarea><br>
+            <input type="file" class="form-control form-control-sm border-0" name="boardFile"> <br>
+            <p><input type="submit" value="글 작성" class="btn btn-primary btn-block my-1"></p>
+        </div>
+    </form>
+    <button class="btn btn-secondary btn-block" onclick="homeReq()">홈으로</button>
 </div>
-
+</body>
+<script>
+    const homeReq = () => {
+        location.href = "/";
+    }
+</script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
