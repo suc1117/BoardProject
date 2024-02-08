@@ -22,7 +22,7 @@
                     Password <input type="password" class="form-control" name="boardPass" id="boardPass" placeholder="비밀번호" required><br>
                 </div>
             </div>
-            <textarea style="resize: none;" class="form-control" rows="10" name="boardContents" placeholder="내용을 입력해주세요." th:text="${boardUpdate.boardContents}" required></textarea><br>
+            <textarea style="resize: none;" class="form-control" rows="10" name="boardContents" placeholder="내용을 입력해주세요." th:utext="${boardUpdate.boardContents}" required></textarea><br>
             <input type="file" class="form-control form-control-sm border-0" name="boardFile"> <br>
             <input type="hidden" class="form-control" name="boardHits" th:value="${boardUpdate.boardHits}"><br>
             <input type="button" value="글 작성" class="btn btn-primary btn-block" onclick="updateReq()">

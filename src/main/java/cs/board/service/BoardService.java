@@ -23,6 +23,8 @@ public class BoardService {
      * Create
      */
     public void save(BoardDTO boardDTO) {
+        String saveContent = boardDTO.getBoardContents().replaceAll("(\\r\\n|\\n)", "<br>");
+        boardDTO.setBoardContents(saveContent);
         BoardEntity boardEntity = BoardEntity.toSaveEntity(boardDTO);
         boardRepository.save(boardEntity);
     }
@@ -56,6 +58,8 @@ public class BoardService {
 
 
     public BoardDTO update(BoardDTO boardDTO) {
+        String saveContent = boardDTO.getBoardContents().replaceAll("(\\r\\n|\\n)", "<br>");
+        boardDTO.setBoardContents(saveContent);
         BoardEntity boardEntity = BoardEntity.toUpdateEntity(boardDTO);
         boardRepository.save(boardEntity);   //JPA will update data if it already has the same id
         return findById(boardDTO.getId());
