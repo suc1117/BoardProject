@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <title>Update</title>
+</head>
+<body>
+<div class="container my-3">
+    <h2 class="border-bottom py-2">글 수정</h2>
+    <!-- action attribute: dest(server address), method attribute: http request method(get, post) -->
+    <form action="/board/update" method="post" name="updateForm" enctype="multipart/form-data">
+        <div class="form-group">
+            <input type="hidden" class="form-control" name="id" th:value="${boardUpdate.id}"><br>
+            Title <input type="text" class="form-control" name="boardTitle" placeholder="제목을 입력해주세요." th:value="${boardUpdate.boardTitle}" required><br>
+            <div class="row g-2">
+                <div class="col-sm">
+                    Writer <input type="text" class="form-control" name="boardWriter" th:value="${boardUpdate.boardWriter}" readonly><br>
+                </div>
+                <div class="col-sm-4">
+                    Password <input type="password" class="form-control" name="boardPass" id="boardPass" placeholder="비밀번호" required><br>
+                </div>
+            </div>
+            <textarea style="resize: none;" class="form-control" rows="10" name="boardContents" placeholder="내용을 입력해주세요." th:text="${boardUpdate.boardContents}" required></textarea><br>
+            <input type="file" class="form-control form-control-sm border-0" name="boardFile"> <br>
+            <input type="hidden" class="form-control" name="boardHits" th:value="${boardUpdate.boardHits}"><br>
+            <input type="button" value="글 작성" class="btn btn-primary btn-block" onclick="updateReq()">
+        </div>
+    </form>
+    <button class="btn btn-secondary btn-block" onclick="backReq()">back</button>
+</div>
+</body>
+<script th:inline="javascript">
+    const backReq = () => {
+        const id = [[${boardUpdate.id}]];
+        location.href = "/board/" + id;
+    }
+    const updateReq = () => {
+        console.log("비밀번호 검증");
+        const pw = [[${boardUpdate.boardPass}]];
+        const inputPw = document.getElementById("boardPass").value;
+        if (pw == inputPw) {
+            document.updateForm.submit();   //Submit the updateForm
+        } else {
+            alert("Password does not match !");
+        }
+    }
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</html>

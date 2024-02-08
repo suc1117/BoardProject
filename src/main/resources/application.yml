@@ -11,3 +11,6 @@ spring:
     password: root
   thymeleaf:
     cache: false
+
+  jpa:
+    show-sql: true
