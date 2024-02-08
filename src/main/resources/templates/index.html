@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
     <title>Home sweet home</title>
 </head>
 <body>
-<h1>My Sweet Home</h1>
-    <button onclick="saveReq()">글 작성하기</button>
+<div class="container my-3">
+<h1 class="text-center my-5">My Sweet Home</h1>
+    <button class="btn btn-primary btn-block" onclick="saveReq()">글 작성하기</button>
     <br>
-    <button onclick="listReq()">글 목록</button>
+    <button class="btn btn-success btn-block" onclick="listReq()">글 목록</button>
+</div>
 </body>
 <script>
     const saveReq = () => {
@@ -18,4 +22,6 @@
         location.href = "/board/";
     }
 </script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </html>
