@@ -96,4 +96,10 @@ public class BoardController {
         model.addAttribute("board", board);
         return "redirect:/board/" + board.getId();
     }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable Long id) {
+        boardService.delete(id);
+        return "redirect:/board/";
+    }
 }
