@@ -22,3 +22,5 @@
    * (/board/delete/{id})
 6. Paging
    * (/board/paging)
+     * /board/paging?page=(pageIndex)
+     * post 14 -> 5 board per page = 3pages
